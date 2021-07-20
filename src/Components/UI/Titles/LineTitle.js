@@ -15,7 +15,7 @@ display: flex;
 justify-content: center;
 `
 const Container = styled.div`
-    color: var(--gold);
+    color: var(--green);
     font-size: 2rem;
     text-align: center;
     position: relative;
@@ -41,7 +41,7 @@ const Container = styled.div`
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        border: 1px solid var(--gold);
+        border: 1px solid var(--green);
        z-index: -2;
     }
 `

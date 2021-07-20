@@ -6,21 +6,21 @@ import { faAngleRight } from '@fortawesome/pro-light-svg-icons'
 const Container = styled.button`    
     margin: ${props => props.margin ? '10px' : null};
     letter-spacing: var(--letterSpacing);
-    border: 2px solid var(--gold);
+    border: 2px solid var(--green);
     padding: 10px 30px 10px 20px;
     font-size: 0.9rem;
     outline: none;
     font-family: var(--poppins);
     text-transform: uppercase;
     cursor: pointer;
-    background: ${props => props.background ? "var(--gold)" : "none"};    
-    color: ${props => props.background ? "var(--darkGrey)" : "var(--gold)"};
+    background: ${props => props.background ? "var(--green)" : "none"};    
+    color: ${props => props.background ? "var(--darkGrey)" : "var(--green)"};
 
     &:hover{
-        background: ${props => !props.background ? "var(--gold)" : "none"};
+        background: ${props => !props.background ? "var(--green)" : "none"};
        
-        color: ${props => !props.background ? "var(--darkGrey)" : "var(--gold)"};
-        border: 2px solid var(--gold);
+        color: ${props => !props.background ? "var(--darkGrey)" : "var(--green)"};
+        border: 2px solid var(--green);
 
 }
 `

@@ -12,7 +12,7 @@ font-weight: ${props => props.fontWeight === "regular" ? 400 : null};
  font-size: 1.5rem;
  width: auto;
  margin-top: 10px;
- color: var(--gold);
+ color: var(--green);
  letter-spacing: 0.04rem;
  text-align: ${props => props.align === 'center' ? 'center' : 'left'};
 `

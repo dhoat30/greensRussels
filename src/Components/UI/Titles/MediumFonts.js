@@ -6,7 +6,7 @@ function MediumFonts(props) {
     )
 }
 const Container = styled.h6`
-color: ${props => props.color === 'white' ? 'white' : 'var(--gold)'};
+color: ${props => props.color === 'white' ? 'white' : 'var(--green)'};
 text-align: ${props => props.align === 'center' ? 'center' : 'left'};
 font-weight: 300;
 line-height: 1.8rem;
@@ -14,7 +14,7 @@ letter-spacing: 0.08rem;
 font-size: 1.1rem;
 
 &:hover{
-    color: ${props => props.hover ? 'var(--lightGold)' : 'white'};
+    color: ${props => props.hover ? 'var(--lightGreen)' : 'white'};
 }
 `
 export default MediumFonts

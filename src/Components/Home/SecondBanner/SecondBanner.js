@@ -26,7 +26,10 @@ const query = graphql`
 function SecondBanner() {
   const data = useStaticQuery(query)
 
-  const imageData = data.allWpBanner.edges[0].node.featuredImage.node.localFile.childImageSharp
+  let imageData
+  if (data.allWpBanner.edges[0].node.localFile) {
+    imageData = data.allWpBanner.edges[0].node.featuredImage.node.localFile.childImageSharp
+  }
 
 
   return (

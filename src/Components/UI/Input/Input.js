@@ -33,15 +33,15 @@ display: inline-block;
 background: none;
     width: ${props => props.width === "50" ? "48%" : "100%"};
     padding: 5px 5px 5px 10px;
-    color: var(--gold);
+    color: var(--green);
     height: 40px;
-    border: 1px solid var(--gold);
+    border: 1px solid var(--green);
     outline: none;
    
     margin: 20px 0 0 0;
     border: ${props => props.isInvalid ? "2px solid red" : null};
     &::placeholder{
-        color: var(--gold);
+        color: var(--green);
     }
     ::-webkit-calendar-picker-indicator {
     filter: invert(1);
@@ -58,14 +58,14 @@ display: inline-block;
 background: none;
     width: ${props => props.width === "50" ? "48%" : "100%"};
     padding: 5px 5px 5px 10px;
-    color: var(--gold);
+    color: var(--green);
     height: 150px;
-    border: 1px solid var(--gold);
+    border: 1px solid var(--green);
     outline: none;
     margin: 20px 0 0 0;
     border: ${props => props.isInvalid ? "2px solid red" : null};
     &::placeholder{
-        color: var(--gold);
+        color: var(--green);
     }
  
 `

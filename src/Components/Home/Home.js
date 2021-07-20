@@ -12,14 +12,14 @@ function Home() {
     return (
         <div>
             <HeroSection />
-            <FormSection />
+            {/* <FormSection />
             <SecondBanner />
             <MenuSection />
             <HomeGallery />
             <ThirdBanner />
             <FAQSection />
             <FourthBanner />
-            <TestimonialSection />
+            <TestimonialSection /> */}
         </div>
     )
 }

@@ -29,20 +29,26 @@ function MenuSection() {
   const data = useStaticQuery(query)
 
   const dataArray = data.allWpMenuImage.edges.map(edge => {
-    return {
-      id: edge.node.id,
-      title: edge.node.title.toUpperCase(),
-      image: edge.node.featuredImage.node.localFile.childImageSharp
+    if (edge.node.featuredImage.node.localFile) {
+      return {
+        id: edge.node.id,
+        title: edge.node.title.toUpperCase(),
+        image: edge.node.featuredImage.node.localFile.childImageSharp
+      }
     }
+
   })
 
   const card = dataArray.map(data => {
-    return (
-      <Card key={data.id} to={data.title.includes('DINE') ? '/dine-in-menu' : '/menu '}>
-        <ImageCard image={data.image} title={data.title} />
-        <ColumnTitle align="center">{data.title}</ColumnTitle>
-      </Card>
-    )
+    if (data) {
+      return (
+        <Card key={data.id} to={data.title.includes('DINE') ? '/dine-in-menu' : '/menu '}>
+          <ImageCard image={data.image} title={data.title} />
+          <ColumnTitle align="center">{data.title}</ColumnTitle>
+        </Card>
+      )
+    }
+
   })
   return (
     <Container>

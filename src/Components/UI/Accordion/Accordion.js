@@ -25,13 +25,13 @@ function Accordion(props) {
 }
 
 const Container = styled.div`
-color: var(--gold);
+color: var(--green);
 background: var(--darkBlue);
 padding: 15px 10px;
 margin: 0 0 20px 0;
 cursor: pointer;
 &:hover{
-    color:var(--lightGold);
+    color:var(--lightGreen);
 }
 `
 const TitleContainer = styled.div`

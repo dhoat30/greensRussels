@@ -1,7 +1,7 @@
 import React from 'react'
 import Gallery from '../../UI/Gallery/Gallery'
 import styled from 'styled-components'
-import Pattern from '../../UI/Pattern/Pattern'
+import Pattern from '../../UI/Pattern/ElephantPattern'
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import SectionTitle from '../../UI/Titles/SectionTitle'
 import Button from '../../UI/Button/Button'

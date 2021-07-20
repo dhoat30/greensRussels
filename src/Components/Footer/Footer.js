@@ -80,7 +80,7 @@ function Footer() {
 }
 const Container = styled.section`
 background: var(--darkGrey);
-color: var(--gold);
+color: var(--green);
 padding: 50px 0 10px 0;
 `
 const ContactContainer = styled.div`
@@ -104,7 +104,7 @@ const SocialUnderline = styled.a`
 position: relative;
 
 &:hover{ 
-  color: var(--lightGold) !important;
+  color: var(--lightGreen) !important;
   text-decoration: none; 
 }
 &::after{ 
@@ -112,8 +112,8 @@ position: relative;
   position: absolute;
   width: 100%;
   height: 1px;
-  border: 1px solid var(--gold); 
-  background: var(--gold)
+  border: 1px solid var(--green); 
+  background: var(--green)
 }
 &::before{ 
   content: "";
@@ -121,8 +121,8 @@ position: relative;
   bottom: -8px;
   width: 100%;
   height: 1px;
-  border: 1px solid var(--gold); 
-  background: var(--gold)
+  border: 1px solid var(--green); 
+  background: var(--green)
 }
 `
 const CopyrightContainer = styled.div`
@@ -138,7 +138,7 @@ const Webduel = styled.a`
  margin-left: 5px;
  display: inline-block;
  &:hover{ 
-   color: var(--lightGold);
+   color: var(--lightGreen);
  }
 `
 export default Footer

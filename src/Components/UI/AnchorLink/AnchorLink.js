@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 import { faMobile } from '@fortawesome/pro-regular-svg-icons'
 
-function Link(props) {
+function AnchorLink(props) {
 
     const targetBlank = props.targetBlank ? "_blank" : null
     const mobile = props.mobileIcon ? faMobile : faPhoneAlt;
+    const icon = props.showIcon ? <FontStyle icon={mobile} style={{ fontSize: '15' }} /> : null
 
     return (
         <Container onClick={props.buttonClick}
@@ -15,34 +16,30 @@ function Link(props) {
             className={props.className}
             target={targetBlank}
             href={props.link}>
-            <FontStyle icon={mobile} style={{ fontSize: '15' }} />
             {props.children}
 
         </Container>
     )
 }
 const Container = styled.a`
-display: inline-block;
-text-decoration: none; 
+    display: inline-block;
+    text-decoration: none; 
     letter-spacing: var(--letterSpacing);
-    border: 2px solid var(--gold);
+    border: 2px solid var(--green);
     padding: 10px 25px 10px 25px;
     font-size: 0.9rem;
     outline: none;
     font-family: var(--poppins);
     text-transform: uppercase;
-    margin: 5px 15px 5px 0;
     cursor: pointer;
-    background: ${props => props.background ? "var(--gold)" : "none"};
-    color: ${props => props.background ? "var(--darkGrey)" : "var(--gold)"};
-    
+    background: ${props => props.background ? "var(--green)" : "none"};
+    color: ${props => props.background ? "white" : "var(--green)"};
 
     &:hover{
-        background: ${props => !props.background ? "var(--gold)" : "none"};
-        color: ${props => !props.background ? "var(--darkGrey)" : "var(--gold)"};
-        border: 2px solid var(--gold);
+        background: ${props => !props.background ? "var(--green)" : "none"};
+        color: ${props => !props.background ? "white" : "var(--green)"};
+        border: 2px solid var(--green);
         text-decoration: none;
-
 }
 `
 
@@ -51,4 +48,4 @@ margin-right: 5px;
 
 `
 
-export default Link
+export default AnchorLink

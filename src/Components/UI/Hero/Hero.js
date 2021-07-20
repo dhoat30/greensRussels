@@ -1,71 +1,93 @@
+import AnchorLink from '../AnchorLink/AnchorLink'
 import React from 'react'
 import styled from 'styled-components'
-import { getImage, GatsbyImage } from 'gatsby-plugin-image'
-import Link from '../Link/Link'
 import SectionTitle from '../Titles/SectionTitle'
-import Overlay from '../../UI/Overlay/Overlay'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import ElephantPattern from '../Pattern/ElephantPattern'
 
 function Hero(props) {
-    const image = getImage(props.data.imageSharp)
+    console.log(props.data)
+    const desktopImage = getImage(props.data.imageSharp)
     const mobileImage = getImage(props.data.mobileImage)
-
     return (
-        <Container>
-            <Overlay show={true}></Overlay>
-            {props.pagehero ?
-                <PageHeroContent>
-                    <SectionTitle> About Us</SectionTitle>
-                </PageHeroContent>
-                :
-                <div className="row-container">
-                    <Content>
-                        <h2 className="della gold column-font-size">{props.data.subtitle}</h2>
-                        <h1 className="tokyo-zen gold large-font-size">{props.data.title}</h1>
-                        {props.data.orderOnlineLink ? <Link background={true} link={props.data.orderOnlineLink} targetBlank={true} mobileIcon={true}> Order Online</Link> : null}
-                        {props.data.phoneNumber ? <Link link={`tel:${props.data.phoneNumber}`} iconName={`faPhoneAlt`}>{props.data.phoneNumber} </Link> : null}
-                    </Content>
-                </div>
-            }
+        <Container >
 
-            <DesktopImage $mediumheight={props.mediumHeight} image={image} alt={props.data.title}></DesktopImage>
-            <MobileImage image={mobileImage} alt={props.data.title}></MobileImage>
+            <Content className="row-container">
+                <SectionTitle subTitle={props.data.subtitle} color="white"> {props.data.title} </SectionTitle>
+                <ButtonsContainer>
+                    <AnchorLink link={props.data.orderOnlineLink} background={true} targetBlank={true}> Order Online </AnchorLink>
+                    <AnchorLink showIcon={false}>Book a table</AnchorLink>
+                </ButtonsContainer>
+            </Content>
+            <DesktopGatsbyImage image={desktopImage} alt={props.data.title} />
+            <MobileGatsbyImage image={mobileImage} alt={props.data.title} />
+
+            <PatternContainer className="row-container">
+                <ElephantPatternStyle />
+                <ElephantPatternStyle2 />
+            </PatternContainer>
+
+
         </Container>
     )
 }
 const Container = styled.div`
-    position: relative;
+position: relative;
+background-color: var(--lightGreen);
 `
+
+const ButtonsContainer = styled.div`
+width: 350px;
+margin: 0 auto;
+ display: flex;
+ flex-direction: row;
+  align-items: center;
+  justify-content:space-around;
+@media (max-width: 500px){ 
+    flex-direction: column;
+    height: 100px;
+    width: 200px;
+}`
 
 const Content = styled.div`
 position: absolute;
-top: 50%;
+top: 20px;
+width: 100%;
 z-index: 10;
-transform: translate(0, -50%);
-max-width: 600px;
-@media(max-width: 800px ){
-    top: 130px;
-}
+left: 50%; 
+transform: translate(-50%,0);
 `
-const DesktopImage = styled(GatsbyImage)`
-height: ${props => props.$mediumheight ? "300px" : '100%'};
-@media (max-width: 800px){
+const DesktopGatsbyImage = styled(GatsbyImage)`
+height: 100%;
+max-width: 1386px;
+margin: 0 auto;
+z-index: 2;
+@media (max-width: 850px){
     display: none;
 }
 `
-const MobileImage = styled(GatsbyImage)`
-@media (max-width: 800px){
+const MobileGatsbyImage = styled(GatsbyImage)`
+@media (max-width: 850px){
     display: block;
 }
 display: none;
+@media (max-width: 400px){ 
+    height: 350px;
+}
 `
-
-const PageHeroContent = styled.div`
+const PatternContainer = styled.div`
+position: relative;
+@media (max-width: 700px){
+display: none;
+}
+`
+const ElephantPatternStyle = styled(ElephantPattern)`
+z-index: 0;
+bottom: 0;
 position: absolute;
-z-index: 10; 
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
+left: -100px;
 `
-
-
+const ElephantPatternStyle2 = styled(ElephantPatternStyle)`
+right: 50px;
+`
 export default Hero

@@ -3,29 +3,31 @@ import styled from 'styled-components'
 
 function SectionTitle(props) {
     return (
-        <React.Fragment>
-            <SubTitle id={props.id}>{props.subTitle}</SubTitle>
+        <div className={props.className}>
+            <SubTitle color={props.color} id={props.id}>{props.subTitle}</SubTitle>
             <Title>{props.children}</Title>
-        </React.Fragment>
+        </div>
     )
 }
 
 const SubTitle = styled.h4`
-    color: var(--gold); 
+    color: var(--green); 
     text-align: center;
-    font-family: var(--della);
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: var(--poppins);
     letter-spacing: 0.2rem;
     @media (max-width: 500px){
         font-size: 1rem;
     }
 `
 const Title = styled.h3`
- font-size: 4rem;
- color: var(--gold); 
+ font-size: 2rem;
+ color: var(--green); 
  text-transform: uppercase;
  letter-spacing: 0.2rem;
     text-align: center;
-    font-family: var(--poppins);
+    font-family: var(--playfairDisplay);
     font-weight: 400;
     @media (max-width: 500px){
         font-size: 2rem;

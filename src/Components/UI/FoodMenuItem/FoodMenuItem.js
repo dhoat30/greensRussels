@@ -48,7 +48,7 @@ const DishName = styled.div`
 const Line = styled.div`
      display: table-cell;
     width: 98%;
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid var(--green);
     position: relative;
     bottom: 8px;
     @media(max-width: 900px){
@@ -59,7 +59,7 @@ const Line = styled.div`
     position: absolute;
     bottom: 5px;
     width: 100%;
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 1px solid var(--green);
 
     }
 

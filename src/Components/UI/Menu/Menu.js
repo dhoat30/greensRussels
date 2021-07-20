@@ -31,13 +31,15 @@ function Menu(props) {
 
 const Container = styled.ul`
     display: flex;
+    justify-content: space-between;
     flex-direction: ${props => props.flexRow ? "row" : "column"};
     position: ${props => props.mobileMenu ? "absolute" : "static"};
     top: 50px; 
     right: 0;
     z-index: 20;
+    width: 100%;
     @media (max-width: 1000px ){ 
-        background: var(--darkGrey); 
+        background: var(--lightGreen); 
         width: 250px;
     }
 `

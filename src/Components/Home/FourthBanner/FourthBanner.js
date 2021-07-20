@@ -24,16 +24,20 @@ const query = graphql`
   }
 `
 function FourthBanner() {
-    const data = useStaticQuery(query)
+  const data = useStaticQuery(query)
 
-    const imageData = data.allWpBanner.edges[0].node.featuredImage.node.localFile.childImageSharp
+  let imageData
+  if (data.allWpBanner.edges[0].node.featuredImage.node.localFile) {
+    imageData = data.allWpBanner.edges[0].node.featuredImage.node.localFile.childImageSharp
+  }
 
 
-    return (
-        <div>
-            <Banner bannerData={imageData} alt="second banner on a home page" />
-        </div>
-    )
+
+  return (
+    <div>
+      <Banner bannerData={imageData} alt="second banner on a home page" />
+    </div>
+  )
 }
 
 export default FourthBanner

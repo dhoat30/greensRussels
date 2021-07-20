@@ -1,37 +1,34 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Hero from '../../UI/Hero/Hero'
-
+import styled from 'styled-components'
 
 const query = graphql`
 {
-    allWpSlider(
-      filter: {sliderCategories: {nodes: {elemMatch: {slug: {eq: "home-page"}}}}}
-      sort: {fields: ancestors___nodes___date}
-    ) {
-      edges {
-        node {
-          title
-          id
-          sliderACF {
-            orderOnlineLink
-            phoneNumber
-            subTitle
-            title
-            mobileImage {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
-                }
+  allWpSlider(
+    filter: {sliderCategories: {nodes: {elemMatch: {slug: {eq: "home-page"}}}}}
+  ) {
+    edges {
+      node {
+        id
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
               }
             }
           }
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
-                }
+        }
+        sliderACF {
+          title
+          subTitle
+          phoneNumber
+          orderOnlineLink
+          mobileImage {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
               }
             }
           }
@@ -39,11 +36,13 @@ const query = graphql`
       }
     }
   }
+}
 `
 
 function HeroSection() {
 
   const data = useStaticQuery(query)
+
   const dataArray = data.allWpSlider.edges.map(edge => {
     return {
       title: edge.node.sliderACF.title,
@@ -68,9 +67,9 @@ function HeroSection() {
 
   return (
 
-    <div>
+    <Container>
       {HeroComponent}
-    </div>
+    </Container>
 
 
 
@@ -79,6 +78,8 @@ function HeroSection() {
   )
 }
 
-
+const Container = styled.section`
+background: var(--lightGreen);
+`
 
 export default HeroSection

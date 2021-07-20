@@ -5,22 +5,6 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes } from '@fortawesome/pro-light-svg-icons'
 
-const query = graphql`
-  {
-    allWpMenuItem(
-      filter: {locations: {eq: MAIN_MENU}}
-      sort: {fields: order, order: ASC}
-    ) {
-      edges {
-        node {
-            id
-          url
-          label
-        }
-      }
-    }
-  }
-`
 
 
 
@@ -29,8 +13,7 @@ function Navbar(props) {
   const [mobileMenuShow, setMobileMenuShow] = useState(false)
   const [hamburgerIconShow, setHamburgerIconShow] = useState(true)
 
-  const data = useStaticQuery(query)
-  const menuArray = data.allWpMenuItem.edges
+
 
   const clickHandler = (event) => {
     setMobileMenuShow(true)
@@ -49,12 +32,19 @@ function Navbar(props) {
 
       <DesktopContainer>
 
-        <Menu flexRow={true} menuArray={menuArray} home={true} />
+        <Menu flexRow={true}
+          menuArray={props.firstMenuArray}
+          home={false} />
       </DesktopContainer>
 
       <MobileContainer>
         {Icon}
-        {mobileMenuShow ? <Menu orderOnline={props.orderOnline} mobileMenu={true} flexRow={false} menuArray={menuArray} home={true} /> : null}
+        {mobileMenuShow ? <Menu
+          orderOnline={props.orderOnline}
+          mobileMenu={true}
+          flexRow={false}
+          menuArray={props.firstMenuArray}
+          home={false} /> : null}
       </MobileContainer>
     </React.Fragment>
 
@@ -62,7 +52,7 @@ function Navbar(props) {
 }
 
 const DesktopContainer = styled.div`
- margin-right: 50px;
+ width: 100%;
   @media(max-width: 1000px){
     display: none;
   }
@@ -77,7 +67,7 @@ display: none;
 
 const IconStyle = styled(FontAwesomeIcon)`
 font-size: 35px; 
-color: var(--gold);
+color: var(--green);
 position: absolute;
 top: 8px;
 right: 20px;

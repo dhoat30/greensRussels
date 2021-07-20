@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import SectionTitle from '../../UI/Titles/SectionTitle'
 import Form from './Form/Form'
-import Pattern from '../../UI/Pattern/Pattern'
+import Pattern from '../../UI/Pattern/ElephantPattern'
 
 function FormSection() {
 

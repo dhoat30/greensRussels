@@ -59,8 +59,8 @@ module.exports = {
           `source sans-serif pro\:100,200,300,400,500,600,700,900` // you can also specify font weights and styles
         ],
         fonts: [
-          `Della Respira`,
-          `source sans pro\:400` // you can also specify font weights and styles
+          `Playfair Display`,
+          `source sans pro\:400,500,600,700,800,900 ` // you can also specify font weights and styles
         ],
         fonts: [
           `Zen Tokyo Zoo`,

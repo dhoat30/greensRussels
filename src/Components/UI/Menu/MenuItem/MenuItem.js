@@ -3,34 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 
-const activeStyle = {
-    color: 'var(--lightGold)'
-}
-const AnchorStyle = styled.a`
-color: var(--gold); 
-    margin: 0 20px; 
-    &:hover {
-        color: var(--lightGold);
-    }
-   @media (max-width:1000px){
-       padding: 10px 5px;
-       display: block;
-    
-   }
-`
-const LinkStyle = styled(Link)`
 
-color: var(--gold); 
-    margin: 0 20px; 
-    &:hover {
-        color: var(--lightGold);
-    }
-   @media (max-width:1000px){
-       padding: 10px 5px;
-       display: block;
-    
-   }
-`
 function MenuItem(props) {
     return (
         <li>
@@ -48,5 +21,33 @@ function MenuItem(props) {
         </li>
     )
 }
+const activeStyle = {
+    color: 'var(--darkGreen)'
+}
+const AnchorStyle = styled.a`
+color: var(--green); 
+    margin: 0 20px; 
+    &:hover {
+        color: var(--lightGreen);
+    }
+   @media (max-width:1000px){
+       padding: 10px 5px;
+       display: block;
+    
+   }
+`
+const LinkStyle = styled(Link)`
 
+color: var(--green); 
+    margin: 0 20px; 
+  
+    &:hover {
+        color: var(--darkGreen);
+    }
+   @media (max-width:1000px){
+       padding: 10px 5px;
+       display: block;
+    
+   }
+`
 export default MenuItem
