@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Hero from '../../UI/Hero/Hero'
 import styled from 'styled-components'
+import Carousel from 'react-bootstrap/Carousel'
 
 const query = graphql`
 {
@@ -57,9 +58,9 @@ function HeroSection() {
 
   const HeroComponent = dataArray.map(data => {
     return (
-      <React.Fragment key={data.id}>
-        <Hero data={data}></Hero>
-      </React.Fragment>
+      <Carousel.Item key={data.id}>
+        <Hero data={dataArray} />
+      </Carousel.Item>
 
     )
 
@@ -68,9 +69,14 @@ function HeroSection() {
   return (
 
     <Container>
-      {HeroComponent}
-    </Container>
+      <Carousel indicators={false}>
 
+
+        {HeroComponent}
+
+      </Carousel>
+
+    </Container>
 
 
 
@@ -79,7 +85,8 @@ function HeroSection() {
 }
 
 const Container = styled.section`
-background: var(--lightGreen);
+position: relative;
+background-color: var(--lightGreen);
 `
 
 export default HeroSection

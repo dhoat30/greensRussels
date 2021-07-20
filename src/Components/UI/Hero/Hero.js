@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import SectionTitle from '../Titles/SectionTitle'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import ElephantPattern from '../Pattern/ElephantPattern'
+import Carousel from 'react-bootstrap/Carousel'
 
 function Hero(props) {
     console.log(props.data)
@@ -11,6 +12,7 @@ function Hero(props) {
     const mobileImage = getImage(props.data.mobileImage)
     return (
         <Container >
+
 
             <Content className="row-container">
                 <SectionTitle subTitle={props.data.subtitle} color="white"> {props.data.title} </SectionTitle>
@@ -87,7 +89,11 @@ bottom: 0;
 position: absolute;
 left: -100px;
 `
-const ElephantPatternStyle2 = styled(ElephantPatternStyle)`
-right: 50px;
+const ElephantPatternStyle2 = styled(ElephantPattern)`
+z-index: 0;
+bottom: 0;
+position: absolute;
+right: -100px;
+transform: scaleX(-1);
 `
 export default Hero
