@@ -29,7 +29,6 @@ a:hover {
   --lightGreen: #f2fef2;
   --darkGrey: #0c1416;
   --darkBlue: #0f1e21;
-  --zen: "Zen Tokyo Zoo", cursive;
   --poppins: "Poppins", sans-serif;
   --playfairDisplay: "Playfair Display";
   --maxWidth: 1386px;
@@ -121,13 +120,9 @@ button {
   font-weight: 500;
 }
 /* carousel  */
+/* hero carousel  */
 
-.carousel-inner {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
+/* active classes  */
 .inactive {
   display: none !important;
 }

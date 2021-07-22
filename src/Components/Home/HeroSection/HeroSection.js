@@ -8,6 +8,7 @@ const query = graphql`
 {
   allWpSlider(
     filter: {sliderCategories: {nodes: {elemMatch: {slug: {eq: "home-page"}}}}}
+    sort: {fields: date}
   ) {
     edges {
       node {
@@ -59,7 +60,7 @@ function HeroSection() {
   const HeroComponent = dataArray.map(data => {
     return (
       <Carousel.Item key={data.id}>
-        <Hero data={dataArray} />
+        <Hero data={data} />
       </Carousel.Item>
 
     )
@@ -69,7 +70,7 @@ function HeroSection() {
   return (
 
     <Container>
-      <Carousel indicators={false}>
+      <Carousel variant="dark">
 
 
         {HeroComponent}

@@ -4,10 +4,8 @@ import styled from 'styled-components'
 import SectionTitle from '../Titles/SectionTitle'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import ElephantPattern from '../Pattern/ElephantPattern'
-import Carousel from 'react-bootstrap/Carousel'
 
 function Hero(props) {
-    console.log(props.data)
     const desktopImage = getImage(props.data.imageSharp)
     const mobileImage = getImage(props.data.mobileImage)
     return (

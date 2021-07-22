@@ -27,7 +27,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: process.env.WORDPRESS_URL,
+        url: process.env.WORDPRESS_GRAPH,
       },
     },
     "gatsby-plugin-styled-components",

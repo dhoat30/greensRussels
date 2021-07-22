@@ -27,11 +27,10 @@ function SecondBanner() {
   const data = useStaticQuery(query)
 
   let imageData
-  if (data.allWpBanner.edges[0].node.localFile) {
-    imageData = data.allWpBanner.edges[0].node.featuredImage.node.localFile.childImageSharp
-  }
+  imageData = data.allWpBanner.edges[0].node.featuredImage.node.localFile.childImageSharp
 
 
+  console.log(imageData)
   return (
     <div>
       <Banner bannerData={imageData} alt="second banner on a home page" />

@@ -11,7 +11,7 @@ function SectionTitle(props) {
 }
 
 const SubTitle = styled.h4`
-    color: var(--green); 
+    color: var(--darkGrey); 
     text-align: center;
     font-size: 1.5rem;
     font-weight: 400;
@@ -22,7 +22,7 @@ const SubTitle = styled.h4`
     }
 `
 const Title = styled.h3`
- font-size: 2rem;
+ font-size: 3rem;
  color: var(--green); 
  text-transform: uppercase;
  letter-spacing: 0.2rem;

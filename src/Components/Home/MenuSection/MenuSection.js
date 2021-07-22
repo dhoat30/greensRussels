@@ -1,9 +1,10 @@
-import React from 'react'
-import ImageCard from '../../UI/ImageCard/ImageCard'
-import SectionTitle from '../../UI/Titles/SectionTitle'
+import React, { useState, useEffect } from 'react'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import styled from 'styled-components'
 import ColumnTitle from '../../UI/Titles/ColumnTitle'
+import MediumFonts from '../../UI/Titles/MediumFonts'
+import axios from 'axios'
+import SpecialContent from '../../UI/SpecialContent/SpecialContent'
 const query = graphql`
 {
   allWpMenuImage {
@@ -15,7 +16,7 @@ const query = graphql`
           node {
             localFile {
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 500, height: 600,  transformOptions: {cropFocus: CENTER})
+                gatsbyImageData(layout: FIXED, placeholder: BLURRED, width: 500, height: 600,  transformOptions: {cropFocus: CENTER})
               }
             }
           }
@@ -26,8 +27,35 @@ const query = graphql`
 }
 `
 function MenuSection() {
-  const data = useStaticQuery(query)
+  const [menuArray, setMenuArray] = useState([])
+  // let menuItemsArray
+  // using use effect so it won't keep re running on state change
+  useEffect(() => {
+    axios(`${process.env.WORDPRESS_URL}/wp-json/wp/v2/menu?menu-category-slug=home-page`)
+      .then(res => {
+        setMenuArray(res.data)
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
 
+  // rendered items array 
+  const menuItems = menuArray.map(data => {
+    return (<React.Fragment key={data.id}>
+      <ColumnTitle
+        color="var(--darkGrey)"
+        fontWeight="regular">
+        {data.title.rendered}
+      </ColumnTitle>
+      <MediumFonts>
+        {data.acf.description}
+      </MediumFonts>
+    </React.Fragment>)
+  })
+
+
+  //GraphQl query for images  
+  const data = useStaticQuery(query)
   const dataArray = data.allWpMenuImage.edges.map(edge => {
     if (edge.node.featuredImage.node.localFile) {
       return {
@@ -36,50 +64,34 @@ function MenuSection() {
         image: edge.node.featuredImage.node.localFile.childImageSharp
       }
     }
-
   })
 
-  const card = dataArray.map(data => {
-    if (data) {
-      return (
-        <Card key={data.id} to={data.title.includes('DINE') ? '/dine-in-menu' : '/menu '}>
-          <ImageCard image={data.image} title={data.title} />
-          <ColumnTitle align="center">{data.title}</ColumnTitle>
-        </Card>
-      )
-    }
 
-  })
   return (
     <Container>
-      <SectionTitle id="menu" subTitle="Tasty Offer">Our Menu</SectionTitle>
-      <Flex>
-        {card}
-      </Flex>
+      <SpecialContent
+        title="Our Specials"
+        subTitle="Menu"
+        content={menuItems}
+        imagesArray={dataArray}
+      />
+
+
+
     </Container>
   )
 }
 const Container = styled.div`
-    background: var(--darkGrey);
-    padding: 150px 0;
-    position: relative;
-    z-index: 3; 
-`
+      background: var(--lightGreen);
+      padding: 150px 0 50px 0;
+      position: relative;
+      z-index: 3;
+      `
 const Flex = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-`
-const Card = styled(Link)`
-/* width: 300px; 
-height: 300px; */
-margin: 20px 30px;
-transition: 500ms ease-in-out;
-&:hover{ 
-    transform: scale(1.05);
-    cursor: pointer;
-    text-decoration: none; 
-}
-`
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      `
+
 export default MenuSection
