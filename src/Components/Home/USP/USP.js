@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import ColumnTitle from '../../UI/Titles/ColumnTitle'
-import MediumFonts from '../../UI/Titles/MediumFonts'
 function USP() {
     const [uspDataArray, setUspDataArray] = useState([])
     useEffect(() => {
