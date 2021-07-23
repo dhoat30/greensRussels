@@ -1,9 +1,9 @@
 import React from 'react'
-// import FormSection from './FormSection/FormSection'
+import FormSection from './FormSection/FormSection'
 import HeroSection from './HeroSection/HeroSection'
 import MenuSection from './MenuSection/MenuSection'
 import SecondBanner from './SecondBanner/SecondBanner'
-// import HomeGallery from './HomeGallery/HomeGallery'
+import HomeGallery from './HomeGallery/HomeGallery'
 // import ThirdBanner from './ThirdBanner/ThirdBanner'
 // import FAQSection from './FAQSection/FAQSection'
 // import FourthBanner from './FourthBanner/FourthBanner'
@@ -23,10 +23,12 @@ function Home() {
             <TestimonialSection />
             <ChefSection />
             <ExtraInfo />
-            {/* <FormSection />
+            <FormSection />
+            <HomeGallery />
+            {/* 
             
          
-            <HomeGallery />
+            
             <ThirdBanner />
             <FAQSection />
             <FourthBanner />

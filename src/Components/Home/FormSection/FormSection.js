@@ -2,34 +2,30 @@ import React from 'react'
 import styled from 'styled-components'
 import SectionTitle from '../../UI/Titles/SectionTitle'
 import Form from './Form/Form'
-import Pattern from '../../UI/Pattern/ElephantPattern'
 
 function FormSection() {
 
 
     return (
         <Container>
-            <PatternContainer>
-                <Pattern />
-            </PatternContainer>
-
-            <SectionTitle subTitle="Reservation">Book a Table</SectionTitle>
-            <Form></Form>
+            <Content>
+                <SectionTitle color="var(--green) ">Book a Table</SectionTitle>
+                <Form></Form>
+            </Content>
         </Container>
-
     )
 }
 
 const Container = styled.div`
-    background: var(--darkBlue);
     padding: 100px 0;
     position: relative;
 `
-const PatternContainer = styled.div`
-position: absolute;
-@media (max-width: 900px){
-    display: none;
-}
+
+const Content = styled.div`
+background: var(--lightGreen);
+max-width: 1300px;
+margin: 0 auto;
+padding: 50px 0;
 `
 
 export default FormSection

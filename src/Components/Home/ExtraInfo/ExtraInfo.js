@@ -15,32 +15,38 @@ function ExtraInfo() {
     }, [])
 
 
-    const infoArray = dataArray.map(data => {
+    const info = dataArray.map(data => {
         return (
             <React.Fragment>
-
+                <OverlayTitle key="12" size="small" subTitle={data.acf.total_menu_options}> Dinner Options </OverlayTitle>
+                <OverlayTitle key="13" size="small" subTitle={data.acf.number_of_table}> Number Of Tables</OverlayTitle>
+                <OverlayTitle key="14" size="small" subTitle={data.acf.experience_}> Years Of Experience</OverlayTitle>
+                <OverlayTitle key="15" size="small" subTitle={data.acf.happy_guests}> Happy Guests</OverlayTitle>
             </React.Fragment>
+
         )
     })
 
     return (
         <Container className="row-container">
-            <Card>
-                <OverlayTitle size="small" subTitle="13"> hello this </OverlayTitle>
-            </Card>
-
+            <Flex>
+                {info}
+            </Flex>
         </Container>
     )
 }
 
 const Container = styled.section`
-padding-top: 100px ; 
+padding-top: 200px ; 
 padding-bottom: 50px;
 `
-const Card = styled.div`
-width: auto;
-display: inline-block;
-border: solid red;
+const Flex = styled.div`
+/* max-width: 300px;
+min-width: 250px; */
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+flex-wrap: wrap;
 `
 
 export default ExtraInfo

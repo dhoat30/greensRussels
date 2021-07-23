@@ -14,12 +14,12 @@ const Container = styled.button`
     text-transform: uppercase;
     cursor: pointer;
     background: ${props => props.background ? "var(--green)" : "none"};    
-    color: ${props => props.background ? "var(--darkGrey)" : "var(--green)"};
+    color: ${props => props.background ? "white" : "var(--green)"};
 
     &:hover{
         background: ${props => !props.background ? "var(--green)" : "none"};
        
-        color: ${props => !props.background ? "var(--darkGrey)" : "var(--green)"};
+        color: ${props => !props.background ? "white" : "var(--green)"};
         border: 2px solid var(--green);
 
 }

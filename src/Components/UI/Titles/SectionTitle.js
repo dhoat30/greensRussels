@@ -5,7 +5,7 @@ function SectionTitle(props) {
     return (
         <div className={props.className}>
             <SubTitle color={props.color} id={props.id}>{props.subTitle}</SubTitle>
-            <Title>{props.children}</Title>
+            <Title color={props.color}>{props.children}</Title>
         </div>
     )
 }
@@ -23,7 +23,7 @@ const SubTitle = styled.h4`
 `
 const Title = styled.h3`
  font-size: 3rem;
- color: var(--green); 
+ color:  ${props => props.color};
  text-transform: uppercase;
  letter-spacing: 0.2rem;
     text-align: center;

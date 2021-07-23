@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Button from '../../../UI/Button/Button'
 import Input from '../../../UI/Input/Input'
 import axios from 'axios'
+import Loader from '../../../UI/Loader/Loader'
 function Form() {
 
 
@@ -27,6 +28,8 @@ function Form() {
     const [enteredTimeTouched, setEnteredTimeTouched] = useState(false)
 
     const [formSubmitted, setFormSubmitted] = useState(false)
+
+    const [showLoader, setShowLoader] = useState(false)
 
     // validate 
     let enteredNameIsValid = enteredName.trim().length > 2
@@ -99,38 +102,39 @@ function Form() {
         setEnteredDateTouched(true)
         setEnteredTimeTouched(true)
 
+
+
         if (!enteredName || !enteredEmail || !enteredPhone || !enteredGuests || !enteredDate || !enteredTime) {
             return
         }
-        // axios.post('https://data.delhi6.co.nz/booking-form/',
-        //     {
-        //         name: enteredName,
-        //         email: enteredEmail,
-        //         phone: enteredPhone,
-        //         guests: enteredGuests,
-        //         date: enteredDate,
-        //         time: enteredTime
-        //     }).then(res => {
-        //         console.log(res)
-        //     }).catch(err => {
-        //         console.log(err)
-
-        //     })
-        setFormSubmitted(true)
-
-        setEnteredName("")
-        setEnteredEmail("")
-        setEnteredPhone("")
-        setEnteredGuests("")
-        setEnteredDate("")
-        setEnteredTime("")
-        setEnteredNameTouched(false)
-        setEnteredEmailTouched(false)
-        setEnteredPhoneTouched(false)
-        setEnteredGuestsTouched(false)
-        setEnteredDateTouched(false)
-        setEnteredTimeTouched(false)
-
+        setShowLoader(true)
+        axios.post(`${process.env.WORDPRESS_URL}/booking-form`,
+            {
+                name: enteredName,
+                email: enteredEmail,
+                phone: enteredPhone,
+                guests: enteredGuests,
+                date: enteredDate,
+                time: enteredTime
+            }).then(res => {
+                setFormSubmitted(true)
+                setEnteredName("")
+                setEnteredEmail("")
+                setEnteredPhone("")
+                setEnteredGuests("")
+                setEnteredDate("")
+                setEnteredTime("")
+                setEnteredNameTouched(false)
+                setEnteredEmailTouched(false)
+                setEnteredPhoneTouched(false)
+                setEnteredGuestsTouched(false)
+                setEnteredDateTouched(false)
+                setEnteredTimeTouched(false)
+                setShowLoader(false)
+            }).catch(err => {
+                console.log(err)
+                setShowLoader(false)
+            })
     }
 
     return (
@@ -210,11 +214,10 @@ function Form() {
                         isInvalid={timeInputIsInvalid}
                         value={enteredTime}
                         width="50"
-
                     />
                 </InputContainer>
 
-                <ButtonStyle>Book Now</ButtonStyle>
+                {showLoader ? <Loader alignCenter={true} /> : <ButtonStyle color="white">Book Now</ButtonStyle>}
 
             </FormStyle>
             {formSubmitted ? <p className="success center-align">Thanks for booking a table. </p> : null}
@@ -231,20 +234,20 @@ function Form() {
     )
 }
 const FormStyle = styled.form`
-max-width: 462px;
+max-width: 1000px;
 margin: 0 auto;
+
 `
 const ButtonStyle = styled(Button)`
 display: block;
-margin: 20px auto;
+margin: 20px auto !important;
 `
-
 const InputContainer = styled.div`
 display: flex;
 justify-content: space-between;
 flex-direction: row;
 align-items: center;
 flex-wrap: wrap;
-
 `
+
 export default Form

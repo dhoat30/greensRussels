@@ -31,29 +31,26 @@ function Input(props) {
 const InputStyle = styled.input`
 display: inline-block;
 background: none;
+max-width: 250px;
     width: ${props => props.width === "50" ? "48%" : "100%"};
     padding: 5px 5px 5px 10px;
     color: var(--green);
     height: 40px;
-    border: 1px solid var(--green);
+    border: none;
+    border-bottom: ${props => props.isInvalid ? "2px solid red" : "1px solid var(--green)"};
     outline: none;
-   
-    margin: 20px 0 0 0;
-    border: ${props => props.isInvalid ? "2px solid red" : null};
+    margin: 30px 20px 0 20px;
+
     &::placeholder{
         color: var(--green);
     }
-    ::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-    
-}
+
 @media (max-width: 500px ){
         width:95% !important;
         margin: 20px  auto 0 auto;
     }
 `
 const TextAreaStyle = styled.textarea`
-
 display: inline-block;
 background: none;
     width: ${props => props.width === "50" ? "48%" : "100%"};
