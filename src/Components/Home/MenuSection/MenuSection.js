@@ -66,14 +66,15 @@ function MenuSection() {
     }
   })
 
-
   return (
     <Container>
       <SpecialContent
+        dataArray={dataArray}
         title="Our Specials"
         subTitle="Menu"
         content={menuItems}
-        imagesArray={dataArray}
+        firstImage={dataArray[0].image}
+        secondImage={dataArray[1].image}
       />
 
 

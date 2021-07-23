@@ -120,6 +120,13 @@ button {
   font-weight: 500;
 }
 /* carousel  */
+.carousel-indicators {
+  position: absolute !important;
+  bottom: -50px !important;
+}
+.carousel-indicators li {
+  background-color: black !important;
+}
 /* hero carousel  */
 
 /* active classes  */

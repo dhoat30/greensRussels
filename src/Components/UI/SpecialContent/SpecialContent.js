@@ -15,8 +15,8 @@ function SpecialContent(props) {
                 </Content>
 
             </DishesContainer>
-            <ImageCardFirst key={props.imagesArray[0].id} image={props.imagesArray[0].image} title={props.imagesArray[0].title} />
-            <ImageCardSecond key={props.imagesArray[1].id} image={props.imagesArray[1].image} title={props.imagesArray[1].title} />
+            <ImageCardFirst key="1265" image={props.firstImage} title="Special Content" />
+            <ImageCardSecond key="1253" image={props.secondImage} title="Special Content" />
 
         </Container>
     )

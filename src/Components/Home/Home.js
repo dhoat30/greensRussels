@@ -7,9 +7,11 @@ import SecondBanner from './SecondBanner/SecondBanner'
 // import ThirdBanner from './ThirdBanner/ThirdBanner'
 // import FAQSection from './FAQSection/FAQSection'
 // import FourthBanner from './FourthBanner/FourthBanner'
-// import TestimonialSection from './TestimonialSection/TestimonialSection'
+import TestimonialSection from './TestimonialSection/TestimonialSection'
 import SloganSection from './SloganSection/SloganSection'
 import USP from './USP/USP'
+import ChefSection from './ChefSection/ChefSection'
+import ExtraInfo from './ExtraInfo/ExtraInfo'
 function Home() {
     return (
         <div>
@@ -18,6 +20,9 @@ function Home() {
             <MenuSection />
             <USP />
             <SecondBanner />
+            <TestimonialSection />
+            <ChefSection />
+            <ExtraInfo />
             {/* <FormSection />
             
          
@@ -25,7 +30,7 @@ function Home() {
             <ThirdBanner />
             <FAQSection />
             <FourthBanner />
-            <TestimonialSection /> */}
+           */}
         </div>
     )
 }

@@ -4,7 +4,6 @@ import "./Layout.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from '../Components/Footer/Footer'
 import SimpleReactLightbox from 'simple-react-lightbox'
-
 function Layout(props) {
     return (
         <React.Fragment>

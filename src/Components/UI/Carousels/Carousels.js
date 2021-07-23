@@ -7,17 +7,19 @@ function Carousels(props) {
     const CarouselItem = props.data.map(data => {
         return (
             <Carousel.Item key={data.id}>
-                <MediumFonts align="center" color="white">{data.content}</MediumFonts>
+                <MediumFonts align="center">{data.content}</MediumFonts>
                 <ColumnTitle align="center">{data.title}</ColumnTitle>
 
 
             </Carousel.Item>)
     })
     return (
-        <Carousel indicators={false}>
+        <Carousel interval={2000} indicators={true} variant="dark" className={props.className}>
             {CarouselItem}
 
         </Carousel>
+
+
     )
 }
 // const ItemStyle = styled(Carousel.Item)`

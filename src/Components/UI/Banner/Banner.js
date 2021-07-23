@@ -16,7 +16,7 @@ function Banner(props) {
 const Container = styled.div`
  position: relative;
  background: var(--lightGreen);
- height: 800px;
+ height: 700px;
  margin-top: 100px;
  @media (max-width: 700px){
      display: none;
@@ -40,5 +40,6 @@ position: absolute;
 top: 50px;
 left: 50px;
 z-index: 1; 
+transform: rotate(-30deg);
 `
 export default Banner
