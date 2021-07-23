@@ -1,144 +1,137 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Logo from '../UI/Logo/Logo'
-import { graphql, useStaticQuery } from "gatsby"
-import MediumFonts from '../UI/Titles/MediumFonts'
-const query = graphql`
-  {
-    allWpInformation {
-      edges {
-        node {
-          id
-          informationACF {
-            closed
-            copyright
-            email
-            facebook
-            menuLog
-            openingHours
-            phone
-            tripAdvisor
-            region
-            streetAddress
-          }
-        }
-      }
+import axios from 'axios'
+import ColumnTitle from '../UI/Titles/ColumnTitle'
+import AnchorLinkIcon from '../UI/AnchorLinkIcon/AnchorLinkIcon'
+
+const Footer = (props) => {
+  const [dataArray, setDataArray] = useState([])
+  useEffect(() => {
+    axios(`${process.env.WORDPRESS_URL}/wp-json/wp/v2/info`)
+      .then(res => {
+        setDataArray(res.data)
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
+
+  const infoArray = dataArray.map(item => {
+    return {
+      streetAddress: item.acf.street_address,
+      region: item.acf.region,
+      phone: item.acf.phone,
+      email: item.acf.email,
+      facebook: item.acf.facebook,
+      tripAdvisor: item.acf.trip_advisor,
+      menuLog: item.acf.menu_log,
+      openingHours: item.acf.opening_hours,
+      closed: item.acf.closed_,
+      copyright: item.acf.copyright
+
     }
-  }`
-
-function Footer() {
-  const data = useStaticQuery(query)
-
-  const dataObject = data.allWpInformation.edges[0].node
-  const infoObject = {
-    id: dataObject.id,
-    streetAddress: dataObject.informationACF.streetAddress,
-    region: dataObject.informationACF.region,
-    phone: dataObject.informationACF.phone,
-    email: dataObject.informationACF.email,
-    openingHours: dataObject.informationACF.openingHours,
-    closed: dataObject.informationACF.closed,
-    facebook: dataObject.informationACF.facebook,
-    tripAdvisor: dataObject.informationACF.tripAdvisor,
-    menuLog: dataObject.informationACF.menuLog,
-    copyright: dataObject.informationACF.copyright
-  }
-  let phone = `tel:${infoObject.phone}`
-  let email = `mailto:${infoObject.email}`
+  })
+  console.log(infoArray)
 
   return (
-    <Container>
-      <Logo width="150px" />
+    <React.Fragment>
+      {
+        infoArray[0] ?
+          <Container>
+            <Content className="row-container">
 
-      <ContactContainer>
-        <MediumFonts color="white" align="center">{infoObject.streetAddress}</MediumFonts>
-        <MediumFonts color="white" align="center">{infoObject.region}</MediumFonts>
-        <Contact>
-          <a href={phone}><MediumFonts color="white" align="center" hover={true}>{infoObject.phone}</MediumFonts></a>
-          <MediumFonts hover={true} color="white" align="center">&nbsp;|&nbsp;	 </MediumFonts>
-          <a href={email}><MediumFonts hover={true} color="white" align="center">{infoObject.email}</MediumFonts></a>
-        </Contact>
+              <ContactBox>
+                < ColumnTitle >
+                  Contact Us
+                </ColumnTitle >
+                <Items>
+                  <AnchorLinkIcon
+                    link={`tel: ${infoArray[0].streetAddress}`}
+                    icon={"faMapMarkerAlt"}
+                  >
+                    {infoArray[0].streetAddress} <SecondText >{infoArray[0].region}</SecondText>
+                  </AnchorLinkIcon>
 
-        <MediumFonts color="white" align="center">Open: {infoObject.openingHours}</MediumFonts>
-        <MediumFonts color="white" align="center"> {infoObject.closed} Closed</MediumFonts>
-      </ContactContainer>
+                  <AnchorLinkIcon
+                    link={`tel: ${infoArray[0].phone}`}
+                    icon={"faPhoneAlt"}
+                  >
+                    {infoArray[0].phone}
+                  </AnchorLinkIcon>
 
-      <SocialContainer>
-        <SocialUnderline href={infoObject.facebook}><MediumFonts color="white" hover={true} align="center">Facebook</MediumFonts></SocialUnderline>
-        <SocialUnderline href={infoObject.menuLog}><MediumFonts color="white" hover={true} align="center">Menu Log</MediumFonts></SocialUnderline>
-        <SocialUnderline href={infoObject.tripAdvisor}><MediumFonts color="white" hover={true} align="center">Trip Advisor</MediumFonts></SocialUnderline>
-      </SocialContainer>
-
-      <CopyrightContainer>
-        <MediumFonts color="white" align="center">© {infoObject.copyright} </MediumFonts>
-        <Webduel href="https://webduel.co.nz"> <MediumFonts hover={true} color="white">Built By Web<span className="gold bold">Duel</span></MediumFonts></Webduel>
-      </CopyrightContainer>
+                  <AnchorLinkIcon
+                    link={`mailto: ${infoArray[0].email}`}
+                    icon={"faEnvelope"}
+                  >
+                    {infoArray[0].email}
+                  </AnchorLinkIcon>
+                </Items>
 
 
-    </Container>
+              </ContactBox>
+
+              <LogoContainer>
+                <Logo width="250px" />
+                <SocialContainer>
+                  <AnchorLinkIcon icon="faFacebook" link={infoArray[0].facebook} size="35px"> </AnchorLinkIcon>
+                  <AnchorLinkIcon icon="faTripadvisor" link={infoArray[0].tripAdvisor} size="35px"> </AnchorLinkIcon>
+
+                </SocialContainer>
+              </LogoContainer>
+
+              <div>
+                <ColumnTitle>
+                  Opening Hours
+                </ColumnTitle >
+                <div>
+                  <AnchorLinkIcon icon="faAlarmClock" >
+                    Tuesday–Sunday
+                    <SecondText >{infoArray[0].openingHours}</SecondText>
+                    <SecondText >{infoArray[0].closed} Closed</SecondText>
+                  </AnchorLinkIcon>
+                </div>
+              </div>
+            </Content>
+          </Container > : null
+      }
+
+    </React.Fragment>
+
   )
 }
+
 const Container = styled.section`
-background: var(--darkGrey);
-color: var(--green);
-padding: 50px 0 10px 0;
+background: var(--lightGreen); 
+padding: 50px 0;
 `
-const ContactContainer = styled.div`
- margin-top: 30px;
+
+const SecondText = styled.span`
+margin-left: 23px;
+display: block;
 `
-const Contact = styled.div`
-display: flex;
-justify-content: center;
+const Content = styled.div`
+display: flex; 
 flex-direction: row;
-flex-wrap: wrap;
-`
-const SocialContainer = styled.div`
- display: flex;
 justify-content: space-around;
-flex-direction: row;
+align-items: flex-start;
 flex-wrap: wrap;
-max-width: 500px;
-margin: 30px auto 0 auto;
 `
-const SocialUnderline = styled.a`
-position: relative;
+const ContactBox = styled.div`
 
-&:hover{ 
-  color: var(--lightGreen) !important;
-  text-decoration: none; 
-}
-&::after{ 
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  border: 1px solid var(--green); 
-  background: var(--green)
-}
-&::before{ 
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  width: 100%;
-  height: 1px;
-  border: 1px solid var(--green); 
-  background: var(--green)
-}
 `
-const CopyrightContainer = styled.div`
-margin-top: 60px;
+const LogoContainer = styled.div`
+margin: 15px 0;
+`
+
+const Items = styled.div`
+margin-top: 10px;
+`
+
+const SocialContainer = styled.div`
 display: flex;
-justify-content: center;
 flex-direction: row;
-flex-wrap: wrap;
-
-`
-
-const Webduel = styled.a`
- margin-left: 5px;
- display: inline-block;
- &:hover{ 
-   color: var(--lightGreen);
- }
+justify-content: space-between;
+width: 110px;
+margin: 10px auto;
 `
 export default Footer

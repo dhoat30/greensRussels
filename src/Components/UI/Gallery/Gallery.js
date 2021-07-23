@@ -42,6 +42,7 @@ flex-direction: row;
 justify-content: center;
 align-items: flex-start;
 flex-wrap: wrap;
+margin-top: 30px;
 `
 const ImgWrapper = styled.div`
     width: 20%;

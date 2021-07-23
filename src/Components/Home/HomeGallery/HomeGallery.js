@@ -43,17 +43,11 @@ function HomeGallery() {
   })
 
 
-
   return (
     <Container>
-      <FirstPattern>
-        <Pattern />
-      </FirstPattern>
-      <SecondPattern>
-        <Pattern />
-      </SecondPattern>
+
       <GalleryContainer>
-        <SectionTitle subTitle="View our">Gallery</SectionTitle>
+        <SectionTitle>Gallery</SectionTitle>
         <Gallery dataArray={dataArray} />
         <Link to="/gallery"><ButtonStyle align="center">View More </ButtonStyle></Link>
       </GalleryContainer>
@@ -66,28 +60,16 @@ function HomeGallery() {
 
 const Container = styled.section`
 position: relative;
-background: var(--darkBlue);
+background: var(--lightGreen);
 padding: 100px;
 `
 const GalleryContainer = styled.div`
 position: relative;
 z-index: 3;
 margin-bottom: 20px;
+
 `
-const FirstPattern = styled.div`
-position: absolute;
-top: -170px;
-transform: rotate(15deg);
-left: 0;
-z-index: 2;
-`
-const SecondPattern = styled.div`
-position: absolute;
-bottom: -170px;
-right: 0;
-transform: rotate(195deg);
-z-index: 3;
-`
+
 const ButtonStyle = styled(Button)`
 margin: 20px auto 0 auto;
 display: block;

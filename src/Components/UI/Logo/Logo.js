@@ -36,7 +36,7 @@ function Logo(props) {
 const Container = styled.div`
 @media(max-width: 1000px){
   width: 100px;
-  max-width: 100px;
+ 
 }
 margin: 0 auto;
 width: ${props => props.width ? props.width : '90px'};

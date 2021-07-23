@@ -11,13 +11,13 @@ function Accordion(props) {
     }
     let icon = showContent ? faMinus : faPlus
     return (
-        <Container>
-            <TitleContainer onClick={toggleHandler}>
+        <Container onClick={toggleHandler}>
+            <TitleContainer>
                 <Title>{props.title}</Title>
                 <FontAwesomeIcon icon={icon} style={{ fontSize: '20' }} />
             </TitleContainer>
             {showContent ? <ContentContainer>
-                <p>{props.content}</p>
+                <div dangerouslySetInnerHTML={{ __html: props.content }} ></div>
             </ContentContainer> : null}
 
         </Container>
@@ -25,8 +25,8 @@ function Accordion(props) {
 }
 
 const Container = styled.div`
-color: var(--green);
-background: var(--darkBlue);
+color: white;
+background: var(--green);
 padding: 15px 10px;
 margin: 0 0 20px 0;
 cursor: pointer;
@@ -50,7 +50,7 @@ letter-spacing: 0.08rem;
 `
 const ContentContainer = styled.div`
 margin-top: 10px;
-font-weight: 300;
+font-weight: 00;
 letter-spacing: 0.08rem;
 `
 

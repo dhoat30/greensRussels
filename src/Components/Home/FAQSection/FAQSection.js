@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Accordion from '../../UI/Accordion/Accordion'
 import styled from 'styled-components'
 import SectionTitle from '../../UI/Titles/SectionTitle'
 import { graphql, useStaticQuery } from "gatsby"
-
+import axios from 'axios'
 const query = graphql`
   {
     allWpFaq {
@@ -18,23 +18,24 @@ const query = graphql`
   }
 `
 function FAQSection() {
-  const data = useStaticQuery(query)
 
-  const dataArray = data.allWpFaq.edges.map(data => {
-    return {
-      title: data.node.title,
-      id: data.node.id,
-      content: data.node.content
-    }
-  })
+  const [dataArray, setDataArray] = useState([])
+  useEffect(() => {
+    axios(`${process.env.WORDPRESS_URL}/wp-json/wp/v2/faq`)
+      .then(res => {
+        setDataArray(res.data)
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
 
   const accordion = dataArray.map(data => {
-    return <Accordion key={data.id} title={data.title} content={data.content.replace(/(<p[^>]+?>|<p>|<\/p>)/img, "")} />;
+    return <Accordion key={data.id} title={data.title.rendered} content={data.content.rendered} />;
   })
   return (
     <Container>
       <Box>
-        <SectionTitle subTitle="Ask us a question">Frequently Asked Questions</SectionTitle>
+        <SectionTitle>Frequently Asked Questions</SectionTitle>
         <AccordionContainer>
 
           {accordion}
@@ -46,7 +47,6 @@ function FAQSection() {
 }
 
 const Container = styled.section`
-background: var(--darkGrey);
 `
 const Box = styled.div`
 max-width: var(--maxWidth);
