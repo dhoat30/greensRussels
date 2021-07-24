@@ -13,7 +13,7 @@ function Hero(props) {
 
 
             <Content className="row-container">
-                <SectionTitle subTitle={props.data.subtitle} color="white"> {props.data.title} </SectionTitle>
+                <SectionTitle subTitle={props.data.subtitle} color="var(--green)"> {props.data.title} </SectionTitle>
                 <ButtonsContainer>
                     <AnchorLink link={props.data.orderOnlineLink} background={true} targetBlank={true}> Order Online </AnchorLink>
                     <AnchorLink showIcon={false}>Book a table</AnchorLink>

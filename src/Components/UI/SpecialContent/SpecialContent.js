@@ -6,7 +6,7 @@ import ImageCard from '../../UI/ImageCard/ImageCard'
 function SpecialContent(props) {
 
     return (
-        <Container>
+        <Container className={props.className}>
             <OverlayTitle subTitle={props.subTitle}> {props.title} </OverlayTitle>
 
             <DishesContainer className="row-container">
@@ -32,6 +32,7 @@ justify-content: center;
 `
 const Content = styled.div`
 max-width: 350px;
+margin-top: 30px;
 `
 const ImageCardFirst = styled(ImageCard)`
 position: absolute;

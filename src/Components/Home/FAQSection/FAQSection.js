@@ -2,21 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Accordion from '../../UI/Accordion/Accordion'
 import styled from 'styled-components'
 import SectionTitle from '../../UI/Titles/SectionTitle'
-import { graphql, useStaticQuery } from "gatsby"
 import axios from 'axios'
-const query = graphql`
-  {
-    allWpFaq {
-      edges {
-        node {
-          title
-          content
-          id
-        }
-      }
-    }
-  }
-`
+
 function FAQSection() {
 
   const [dataArray, setDataArray] = useState([])
@@ -32,17 +19,23 @@ function FAQSection() {
   const accordion = dataArray.map(data => {
     return <Accordion key={data.id} title={data.title.rendered} content={data.content.rendered} />;
   })
+  console.log(accordion)
   return (
-    <Container>
-      <Box>
-        <SectionTitle>Frequently Asked Questions</SectionTitle>
-        <AccordionContainer>
+    <React.Fragment>
+      {accordion.length > 0 ?
+        <Container>
+          <Box>
+            <SectionTitle>Frequently Asked Questions</SectionTitle>
+            <AccordionContainer>
 
-          {accordion}
-        </AccordionContainer>
-      </Box>
+              {accordion}
+            </AccordionContainer>
+          </Box>
 
-    </Container>
+        </Container> : null
+      }
+    </React.Fragment>
+
   )
 }
 

@@ -24,7 +24,8 @@ const Container = styled.div`
 const Content = styled.div`
 background: var(--lightGreen);
 max-width: 1300px;
-margin: 0 auto;
+
+margin: 0 20px;
 padding: 50px 0;
 `
 

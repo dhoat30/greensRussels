@@ -4,6 +4,7 @@ import Logo from '../UI/Logo/Logo'
 import axios from 'axios'
 import ColumnTitle from '../UI/Titles/ColumnTitle'
 import AnchorLinkIcon from '../UI/AnchorLinkIcon/AnchorLinkIcon'
+import Copyright from '../UI/Copyright/Copyright'
 
 const Footer = (props) => {
   const [dataArray, setDataArray] = useState([])
@@ -41,7 +42,7 @@ const Footer = (props) => {
             <Content className="row-container">
 
               <ContactBox>
-                < ColumnTitle >
+                < ColumnTitle color="var(--green)">
                   Contact Us
                 </ColumnTitle >
                 <Items>
@@ -71,27 +72,28 @@ const Footer = (props) => {
               </ContactBox>
 
               <LogoContainer>
-                <Logo width="250px" />
+                <Logo width="250px" mobileWidth="220px" />
                 <SocialContainer>
-                  <AnchorLinkIcon icon="faFacebook" link={infoArray[0].facebook} size="35px"> </AnchorLinkIcon>
-                  <AnchorLinkIcon icon="faTripadvisor" link={infoArray[0].tripAdvisor} size="35px"> </AnchorLinkIcon>
+                  <AnchorLinkIcon target="_blank" icon="faFacebook" link={infoArray[0].facebook} size="35px"> </AnchorLinkIcon>
+                  <AnchorLinkIcon target="_blank" icon="faTripadvisor" link={infoArray[0].tripAdvisor} size="35px"> </AnchorLinkIcon>
 
                 </SocialContainer>
               </LogoContainer>
 
-              <div>
-                <ColumnTitle>
+              <OpeningHoursContainer>
+                <ColumnTitle color="var(--green)">
                   Opening Hours
                 </ColumnTitle >
-                <div>
-                  <AnchorLinkIcon icon="faAlarmClock" >
+                <Items>
+                  <AnchorLinkIcon icon="faClock" >
                     Tuesday–Sunday
                     <SecondText >{infoArray[0].openingHours}</SecondText>
                     <SecondText >{infoArray[0].closed} Closed</SecondText>
                   </AnchorLinkIcon>
-                </div>
-              </div>
+                </Items>
+              </OpeningHoursContainer>
             </Content>
+            <Copyright copyright={infoArray[0].copyright} />
           </Container > : null
       }
 
@@ -102,7 +104,7 @@ const Footer = (props) => {
 
 const Container = styled.section`
 background: var(--lightGreen); 
-padding: 50px 0;
+padding: 50px 0 0 0;
 `
 
 const SecondText = styled.span`
@@ -115,14 +117,26 @@ flex-direction: row;
 justify-content: space-around;
 align-items: flex-start;
 flex-wrap: wrap;
+@media(max-width: 630px){ 
+  flex-direction: column;
+justify-content: space-between;
+align-items:center;
+flex-wrap: wrap;
+}
 `
 const ContactBox = styled.div`
 
 `
 const LogoContainer = styled.div`
 margin: 15px 0;
-`
+@media(max-width: 630px){ 
+  margin: 20px 0 -20px  0;
 
+}
+`
+const OpeningHoursContainer = styled.div`
+
+`
 const Items = styled.div`
 margin-top: 10px;
 `
@@ -134,4 +148,5 @@ justify-content: space-between;
 width: 110px;
 margin: 10px auto;
 `
+
 export default Footer

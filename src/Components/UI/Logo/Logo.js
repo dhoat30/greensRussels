@@ -28,14 +28,14 @@ function Logo(props) {
   const data = useStaticQuery(query)
   const logo = getImage(data.allWpInformation.edges[0].node.informationACF.logo.localFile)
   return (
-    <Container width={props.width} >
+    <Container mobileWidth={props.mobileWidth} width={props.width} >
       <GatsbyImage image={logo} alt="Delhi 6 Logo"></GatsbyImage>
     </Container>
   )
 }
 const Container = styled.div`
 @media(max-width: 1000px){
-  width: 100px;
+  width: ${props => props.mobileWidth ? props.mobileWidth : '100px'}
  
 }
 margin: 0 auto;

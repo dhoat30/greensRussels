@@ -244,7 +244,7 @@ margin: 20px auto !important;
 `
 const InputContainer = styled.div`
 display: flex;
-justify-content: space-between;
+justify-content: center;
 flex-direction: row;
 align-items: center;
 flex-wrap: wrap;

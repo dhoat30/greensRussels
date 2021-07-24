@@ -46,7 +46,7 @@ function HomeGallery() {
   return (
     <Container>
 
-      <GalleryContainer>
+      <GalleryContainer className="row-container">
         <SectionTitle>Gallery</SectionTitle>
         <Gallery dataArray={dataArray} />
         <Link to="/gallery"><ButtonStyle align="center">View More </ButtonStyle></Link>
@@ -61,12 +61,12 @@ function HomeGallery() {
 const Container = styled.section`
 position: relative;
 background: var(--lightGreen);
-padding: 100px;
+padding: 100px 0;
 `
 const GalleryContainer = styled.div`
-position: relative;
 z-index: 3;
 margin-bottom: 20px;
+width: 100%;
 
 `
 
