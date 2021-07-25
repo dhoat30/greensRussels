@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import MediumFonts from '../../UI/Titles/MediumFonts'
 import ColumnTitle from '../../UI/Titles/ColumnTitle'
 function CardsContent(props) {
-    console.log(props.dataArray[0].firstCardImage)
     return (
         <Container>
             <ImageContainer>

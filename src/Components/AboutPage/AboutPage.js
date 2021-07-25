@@ -82,7 +82,6 @@ const query = graphql`
 
 function AboutPage() {
   const data = useStaticQuery(query)
-  console.log(data)
 
   const dataArray = data.allWpPage.edges.map(data => {
     return {
@@ -115,7 +114,6 @@ function AboutPage() {
     )
 
   })
-  console.log(dataArray)
   return (
     <Container>
       {HeroComponent}
