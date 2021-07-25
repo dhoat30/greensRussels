@@ -1,44 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Carousels from '../../UI/Carousels/Carousels'
 import styled from 'styled-components'
 import SectionTitle from '../../UI/Titles/SectionTitle'
-import { graphql, useStaticQuery } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuoteLeft } from '@fortawesome/pro-duotone-svg-icons'
-
-const query = graphql`
-  {
-    allWpTestimonial {
-      edges {
-        node {
-          title
-          id
-          testimonialsACF {
-            testimony
-          }
-        }
-      }
-    }
-  }
-`
+import axios from 'axios'
 
 function TestimonialSection() {
 
-  const data = useStaticQuery(query)
-  const dataArray = data.allWpTestimonial.edges.map(edge => {
+  const [dataArray, setDataArray] = useState([])
+  useEffect(() => {
+    axios(`${process.env.WORDPRESS_URL}/wp-json/wp/v2/testimonial`)
+      .then(res => {
+        setDataArray(res.data)
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
+
+
+  const testimonialArray = dataArray.map(data => {
     return {
-      title: edge.node.title,
-      id: edge.node.id,
-      content: edge.node.testimonialsACF.testimony,
+      title: data.title.rendered,
+      id: data.id,
+      content: data.acf.testimony
     }
   })
-
-
   return (
     <Container>
       <TestimonialBox className="row-container">
         <SectionTitle fontFamily="var(--playfairDisplay)"><FontAwesomeIcon color="var(--green) " icon={faQuoteLeft} size="2x" /></SectionTitle>
-        <CarouselsStyle data={dataArray} />
+        <CarouselsStyle data={testimonialArray} />
       </TestimonialBox>
 
 

@@ -21,7 +21,7 @@ const Container = styled.div`
     align-items: center;
     flex-wrap: wrap;
     padding: 10px 0;
-    margin: 20px 0 0 0;
+    margin: 20px auto 0 auto;
 `
 
 const SpanStyle = styled.div`

@@ -8,7 +8,6 @@ function Gallery(props) {
     const gallery = props.dataArray.map(data => {
         let image
         if (data.src.localFile) {
-            console.log(data.title)
             image = getImage(data.src.localFile.childImageSharp)
 
             return (

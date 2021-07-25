@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import OverlayTitle from '../Titles/OverlayTitle'
 import ImageCard from '../../UI/ImageCard/ImageCard'
-
+import { Link } from 'gatsby'
 function SpecialContent(props) {
 
     return (
@@ -12,6 +12,7 @@ function SpecialContent(props) {
             <DishesContainer className="row-container">
                 <Content>
                     {props.content}
+                    {props.link ? <LinkStyle to={props.link}>View Menu</LinkStyle> : null}
                 </Content>
 
             </DishesContainer>
@@ -71,6 +72,18 @@ height: 500px;
 }
 @media (max-width: 900px){
   display: none;
+}
+`
+
+const LinkStyle = styled(Link)`
+color: var(--darkGrey);
+ font-weight: 300;
+ font-size: 1.2rem;
+border-bottom: 1px solid var(--darkGrey);
+&:hover{ 
+    color: var(--green);
+    border-bottom: 1px solid var(--green);
+
 }
 `
 

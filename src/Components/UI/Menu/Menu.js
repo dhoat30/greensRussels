@@ -5,10 +5,10 @@ import styled from 'styled-components'
 
 function Menu(props) {
     const menuItems = props.menuArray.map(menuItem => {
-        return <MenuItem key={menuItem.node.id}
+        return <MenuItem key={menuItem.id}
 
-            menuSlug={menuItem.node.url}>
-            {menuItem.node.label}
+            menuSlug={menuItem.url}>
+            {menuItem.label}
         </MenuItem>
     })
     return (

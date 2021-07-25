@@ -19,7 +19,6 @@ function FAQSection() {
   const accordion = dataArray.map(data => {
     return <Accordion key={data.id} title={data.title.rendered} content={data.content.rendered} />;
   })
-  console.log(accordion)
   return (
     <React.Fragment>
       {accordion.length > 0 ?

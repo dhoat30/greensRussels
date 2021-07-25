@@ -1,99 +1,49 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Logo from '../UI/Logo/Logo'
 import Navbar from './Navbar/Navbar'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import { graphql, useStaticQuery } from 'gatsby'
 import AnchorLink from '../UI/AnchorLink/AnchorLink'
-
-const query = graphql`
-{
-    allWpSlider {
-      edges {
-        node {
-          id
-          sliderACF {
-            orderOnlineLink
-          }
-        }
-      }
-    }
-    firstHalfMenu: allWpMenuItem(
-      filter: {locations: {eq: MAIN_MENU}}
-      sort: {fields: order, order: ASC}
-      limit: 3
-    ) {
-      edges {
-        node {
-          id
-          url
-          label
-        }
-      }
-    }
-    secondHalfMenu: allWpMenuItem(
-      filter: {locations: {eq: MAIN_MENU}}
-      sort: {fields: order, order: ASC}
-      limit: 3
-      skip: 3
-    ) {
-      edges {
-        node {
-          id
-          url
-          label
-        }
-      }
-    }
-    mobileMenu: allWpMenuItem(
-      filter: {locations: {eq: MAIN_MENU}}
-      sort: {fields: order, order: ASC}
-    ) {
-      edges {
-        node {
-          id
-          url
-          label
-        }
-      }
-    }
-  }
-`
-
-
-
+import axios from 'axios'
 
 function Header() {
-  const data = useStaticQuery(query)
-  const dataArray = data.allWpSlider.edges.map(edge => {
-    return {
-      id: edge.node.id,
-      orderOnlineLink: edge.node.sliderACF.orderOnlineLink,
+  const [dataArray, setDataArray] = useState([])
+  useEffect(() => {
+    axios(`${process.env.WORDPRESS_URL}/wp-json/myroutes/nav-menu`)
+      .then(res => {
+        setDataArray(res.data)
+      }).catch(err => {
+        console.log(err)
+      })
+  }, [])
 
+  const firstPartMenu = dataArray.slice(0, 3).map(data => {
+    return {
+      id: data.ID,
+      url: data.url,
+      label: data.title
+    }
+  })
+  const secondPartMenu = dataArray.slice(3, 6).map(data => {
+    return {
+      id: data.ID,
+      url: data.url,
+      label: data.title
     }
   })
 
-  const firstMenu = useStaticQuery(query)
-  const firstMenuArrayData = firstMenu.firstHalfMenu.edges
-
-  const secondHalfMenu = useStaticQuery(query)
-  const secondMenuArrayData = secondHalfMenu.secondHalfMenu.edges
-
-  const mobileMenuData = useStaticQuery(query)
-  const mobileMenuArrayData = mobileMenuData.mobileMenu.edges
-
   return (
     <Container>
-
       <DesktopNavbar className="row-container">
-        <Navbar firstMenuArray={firstMenuArrayData} />
+        <Navbar firstMenuArray={firstPartMenu} />
         <LinkStyle to="/"> <Logo header={true} width="200px" /></LinkStyle>
-        <Navbar firstMenuArray={secondMenuArrayData} />
+        <Navbar firstMenuArray={secondPartMenu} />
       </DesktopNavbar>
 
       <MobileNavbar className="row-container">
-        <LinkStyle to="/"> <Logo header={true} width="200px" /></LinkStyle>
-        <Navbar firstMenuArray={mobileMenuArrayData} />
+        {/* <LinkStyle to="/"> <Logo header={true} width="200px" /></LinkStyle>
+        <Navbar firstMenuArray={mobileMenuArrayData} /> */}
       </MobileNavbar>
     </Container>
   )

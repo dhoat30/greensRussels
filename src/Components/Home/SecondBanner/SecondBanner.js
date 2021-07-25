@@ -29,8 +29,6 @@ function SecondBanner() {
   let imageData
   imageData = data.allWpBanner.edges[0].node.featuredImage.node.localFile.childImageSharp
 
-
-  console.log(imageData)
   return (
     <div>
       <Banner bannerData={imageData} alt="second banner on a home page" />

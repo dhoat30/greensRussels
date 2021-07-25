@@ -5,9 +5,10 @@ import ColumnTitle from '../../UI/Titles/ColumnTitle'
 import MediumFonts from '../../UI/Titles/MediumFonts'
 import axios from 'axios'
 import SpecialContent from '../../UI/SpecialContent/SpecialContent'
+
 const query = graphql`
 {
-  allWpMenuImage {
+  allWpMenuImage(filter: {}, skip: 2, sort: {fields: date, order: DESC}) {
     edges {
       node {
         id
@@ -16,7 +17,13 @@ const query = graphql`
           node {
             localFile {
               childImageSharp {
-                gatsbyImageData(layout: FIXED, placeholder: BLURRED, width: 500, height: 600,  transformOptions: {cropFocus: CENTER})
+                gatsbyImageData(
+                  layout: FIXED
+                  placeholder: BLURRED
+                  width: 500
+                  height: 600
+                  transformOptions: {cropFocus: CENTER}
+                )
               }
             }
           }
@@ -25,6 +32,7 @@ const query = graphql`
     }
   }
 }
+
 `
 function MenuSection() {
   const [menuArray, setMenuArray] = useState([])
@@ -37,6 +45,8 @@ function MenuSection() {
       }).catch(err => {
         console.log(err)
       })
+
+    // fetch images 
   }, [])
 
   // rendered items array 
@@ -75,9 +85,8 @@ function MenuSection() {
         content={menuItems}
         firstImage={dataArray[0].image}
         secondImage={dataArray[1].image}
+        link="/menu"
       />
-
-
 
     </Container>
   )
