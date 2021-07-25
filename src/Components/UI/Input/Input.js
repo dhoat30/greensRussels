@@ -59,7 +59,7 @@ background: none;
     height: 150px;
     border: 1px solid var(--green);
     outline: none;
-    margin: 20px 0 0 0;
+    margin: 30px 20px 0 20px;
     border: ${props => props.isInvalid ? "2px solid red" : null};
     &::placeholder{
         color: var(--green);

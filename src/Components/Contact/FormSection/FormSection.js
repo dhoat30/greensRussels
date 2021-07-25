@@ -9,7 +9,7 @@ function FormSection() {
     return (
         <Container>
 
-            <SectionTitle subTitle="Send us a message">Contact Us</SectionTitle>
+            <SectionTitle color="var(--green) ">Contact Us</SectionTitle>
             <Form></Form>
         </Container>
 
@@ -17,11 +17,12 @@ function FormSection() {
 }
 
 const Container = styled.div`
-    background: var(--darkBlue);
-    padding: 100px 0;
+    background: var(--lightGreen);
+    padding: 100px 20px;
     position: relative;
-    width: 49%;
+    width: 100%;
     min-width: 600px;
+    margin-bottom: 100px;
 `
 const PatternContainer = styled.div`
 position: absolute;

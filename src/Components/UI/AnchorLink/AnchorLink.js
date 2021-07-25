@@ -14,6 +14,7 @@ function AnchorLink(props) {
         <Container onClick={props.buttonClick}
             background={props.background}
             className={props.className}
+            margin={props.margin}
             target={targetBlank}
             href={props.link}>
             {props.children}
@@ -30,6 +31,7 @@ const Container = styled.a`
     font-size: 0.9rem;
     outline: none;
     font-family: var(--poppins);
+    margin:${props => props.margin};
     text-transform: uppercase;
     cursor: pointer;
     background: ${props => props.background ? "var(--green)" : "none"};

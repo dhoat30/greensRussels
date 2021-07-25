@@ -9,15 +9,21 @@ function Hero(props) {
     const desktopImage = getImage(props.data.imageSharp)
     const mobileImage = getImage(props.data.mobileImage)
     return (
-        <Container >
+        <Container containerHeight={props.containerHeight}>
 
 
             <Content className="row-container">
                 <SectionTitle subTitle={props.data.subtitle} color="var(--green)"> {props.data.title} </SectionTitle>
-                <ButtonsContainer>
-                    <AnchorLink link={props.data.orderOnlineLink} background={true} targetBlank={true}> Order Online </AnchorLink>
-                    <AnchorLink showIcon={false}>Book a table</AnchorLink>
-                </ButtonsContainer>
+
+                {!props.buttons ?
+                    null :
+                    <ButtonsContainer>
+                        <AnchorLink link={props.data.orderOnlineLink} background={true} targetBlank={true}> Order Online </AnchorLink>
+                        <AnchorLink showIcon={false}>Book a table</AnchorLink>
+                    </ButtonsContainer>
+
+                }
+
             </Content>
             <DesktopGatsbyImage image={desktopImage} alt={props.data.title} />
             <MobileGatsbyImage image={mobileImage} alt={props.data.title} />
@@ -34,6 +40,7 @@ function Hero(props) {
 const Container = styled.div`
 position: relative;
 background-color: var(--lightGreen);
+height: ${props => props.containerHeight ? props.containerHeight : null};
 `
 
 const ButtonsContainer = styled.div`

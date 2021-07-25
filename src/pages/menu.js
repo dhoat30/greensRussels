@@ -1,13 +1,15 @@
 import * as React from "react"
 import Layout from "../Components/Layout"
 import Seo from "../Components/seo"
-import DineMenu from "../Components/DineMenu/DineMenu"
+import MenuPage from "../Components/MenuPage/MenuPage"
 // markup
 const IndexPage = () => {
+
+
     return (
         <Layout>
             <Seo title="this is a home page" description="Indian restaurant in Paihia" />
-            <DineMenu />
+            <MenuPage />
 
         </Layout>
     )

@@ -37,7 +37,7 @@ function TestimonialSection() {
   return (
     <Container>
       <TestimonialBox className="row-container">
-        <SectionTitle fontFamily="var(--playfairDisplay)"><FontAwesomeIcon icon={faQuoteLeft} size="2x" /></SectionTitle>
+        <SectionTitle fontFamily="var(--playfairDisplay)"><FontAwesomeIcon color="var(--green) " icon={faQuoteLeft} size="2x" /></SectionTitle>
         <CarouselsStyle data={dataArray} />
       </TestimonialBox>
 

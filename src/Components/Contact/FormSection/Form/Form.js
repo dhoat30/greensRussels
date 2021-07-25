@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import Button from '../../../UI/Button/Button'
 import Input from '../../../UI/Input/Input'
 import axios from 'axios'
+import Loader from '../../../UI/Loader/Loader'
+
 function Form() {
 
 
@@ -19,6 +21,8 @@ function Form() {
     const [enteredMessage, setEnteredMessage] = useState('')
 
     const [formSubmitted, setFormSubmitted] = useState(false)
+
+    const [showLoader, setShowLoader] = useState(false)
 
     // validate 
     let enteredNameIsValid = enteredName.trim().length > 2
@@ -70,28 +74,32 @@ function Form() {
         if (!enteredName || !enteredEmail || !enteredPhone) {
             return
         }
-        // axios.post('https://data.delhi6.co.nz/booking-form/',
-        //     {
-        //         name: enteredName,
-        //         email: enteredEmail,
-        //         phone: enteredPhone,
-        //         message: enteredMessage,
+        setShowLoader(true)
 
-        //     }).then(res => {
-        //         console.log(res)
-        //     }).catch(err => {
-        //         console.log(err)
+        axios.post(`${process.env.WORDPRESS_URL}/booking-form`,
+            {
+                name: enteredName,
+                email: enteredEmail,
+                phone: enteredPhone,
+                message: enteredMessage,
+            }).then(res => {
+                setFormSubmitted(true)
+                console.log('form submitted')
+                setEnteredName("")
+                setEnteredEmail("")
+                setEnteredPhone("")
+                setEnteredMessage("")
+                setEnteredNameTouched(false)
+                setEnteredEmailTouched(false)
+                setEnteredPhoneTouched(false)
+                setShowLoader(false)
 
-        //     })
-        setFormSubmitted(true)
-        console.log('form submitted')
-        setEnteredName("")
-        setEnteredEmail("")
-        setEnteredPhone("")
-        setEnteredMessage("")
-        setEnteredNameTouched(false)
-        setEnteredEmailTouched(false)
-        setEnteredPhoneTouched(false)
+            }).catch(err => {
+                console.log(err)
+                setShowLoader(false)
+
+            })
+
     }
 
     return (
@@ -148,8 +156,8 @@ function Form() {
 
 
                 </InputContainer>
+                {showLoader ? <Loader alignCenter={true} /> : <ButtonStyle>Send</ButtonStyle>}
 
-                <ButtonStyle>Send</ButtonStyle>
 
             </FormStyle>
             {formSubmitted ? <p className="success center-align">Message Sent. We will get back to you soon.</p> : null}
@@ -161,7 +169,7 @@ function Form() {
     )
 }
 const FormStyle = styled.form`
-max-width: 462px;
+max-width: 1000px;
 margin: 0 auto;
 `
 const ButtonStyle = styled(Button)`
@@ -175,6 +183,5 @@ justify-content: space-between;
 flex-direction: row;
 align-items: center;
 flex-wrap: wrap;
-
 `
 export default Form

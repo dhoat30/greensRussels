@@ -19,13 +19,14 @@ function FormSection() {
 const Container = styled.div`
     padding: 100px 0;
     position: relative;
+    margin: 0 20px;
 `
 
 const Content = styled.div`
 background: var(--lightGreen);
 max-width: 1300px;
 
-margin: 0 20px;
+margin: 0 auto;
 padding: 50px 0;
 `
 

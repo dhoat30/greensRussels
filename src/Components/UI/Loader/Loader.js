@@ -10,7 +10,7 @@ function Loader(props) {
 }
 
 const FontStyle = styled(FontAwesomeIcon)`
-color: var(--gold);
+color: var(--green);
 display: block;
 margin: ${props => props.alignCenter ? "20px auto 0 auto" : null} ;
 `

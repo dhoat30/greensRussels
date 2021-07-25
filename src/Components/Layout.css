@@ -32,6 +32,7 @@ a:hover {
   --poppins: "Poppins", sans-serif;
   --playfairDisplay: "Playfair Display";
   --maxWidth: 1386px;
+  --transition: 500ms ease-in-out;
 }
 button {
   position: relative;

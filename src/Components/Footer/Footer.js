@@ -32,7 +32,6 @@ const Footer = (props) => {
 
     }
   })
-  console.log(infoArray)
 
   return (
     <React.Fragment>

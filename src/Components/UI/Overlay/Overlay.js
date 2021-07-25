@@ -3,7 +3,7 @@ import styled from 'styled-components'
 function Overlay(props) {
     return (
         <React.Fragment>
-            {props.showOverlay ? <OverlayContainer position={props.position} /> : null}
+            {props.showOverlay ? <OverlayContainer position={props.position} onClick={props.overlayClick} /> : null}
         </React.Fragment>
 
 
@@ -19,7 +19,7 @@ const OverlayContainer = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.3); 
+    background: rgba(0, 0, 0, 0.7); 
     z-index: 20;
 `
 

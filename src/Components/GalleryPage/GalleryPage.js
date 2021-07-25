@@ -43,7 +43,7 @@ function GalleryPage() {
 
   return (
     <Container>
-      <SectionTitle subTitle="View our ">
+      <SectionTitle>
         Gallery
       </SectionTitle>
       <GalleryContainer>
@@ -59,7 +59,6 @@ function GalleryPage() {
 
 const Container = styled.section`
 position: relative;
-background: var(--darkBlue);
 padding: 100px;
 `
 const GalleryContainer = styled.div`

@@ -37,7 +37,6 @@ function AnchorLinkIcon(props) {
             iconStyle = null
     }
 
-    console.log(props.align)
     return (
 
         <AnchorLink target={props.target} size={props.size} href={props.link}>
