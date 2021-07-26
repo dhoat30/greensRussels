@@ -5,6 +5,7 @@ import axios from 'axios'
 import ColumnTitle from '../UI/Titles/ColumnTitle'
 import AnchorLinkIcon from '../UI/AnchorLinkIcon/AnchorLinkIcon'
 import Copyright from '../UI/Copyright/Copyright'
+import MobileFixedButtons from '../UI/MobileFixedButtons/MobileFixedButtons'
 
 const Footer = (props) => {
   const [dataArray, setDataArray] = useState([])
@@ -28,8 +29,8 @@ const Footer = (props) => {
       menuLog: item.acf.menu_log,
       openingHours: item.acf.opening_hours,
       closed: item.acf.closed_,
-      copyright: item.acf.copyright
-
+      copyright: item.acf.copyright,
+      orderOnlineLink: item.acf.order_online_link
     }
   })
 
@@ -93,6 +94,7 @@ const Footer = (props) => {
               </OpeningHoursContainer>
             </Content>
             <Copyright copyright={infoArray[0].copyright} />
+            <MobileFixedButtons orderOnlineLink={infoArray[0].orderOnlineLink} phoneNumber={infoArray[0].phoneNumber} />
           </Container > : null
       }
 
