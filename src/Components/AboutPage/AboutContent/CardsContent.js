@@ -8,12 +8,12 @@ function CardsContent(props) {
         <Container>
             <ImageContainer>
                 <Card>
-                    <ImageCard image={props.dataArray[0].firstCardImage} title="Thai Dish" />
+                    <ImageCardStyle image={props.dataArray[0].firstCardImage} title="Thai Dish" />
 
 
                 </Card>
                 <Card>
-                    <ImageCard image={props.dataArray[0].secondCardImage} title="Indian Dish" />
+                    <ImageCardStyle image={props.dataArray[0].secondCardImage} title="Indian Dish" />
                 </Card>
             </ImageContainer>
 
@@ -46,22 +46,26 @@ const ContentContainer = styled(ImageContainer)`
 top:-150px;
 `
 const Card = styled.div`
- width: 45%;
+  width: 40%;
 max-width: 700px;
- height: 400px;
- overflow: hidden;
- margin: 0 20px 20px 20px;
+ margin: 50px 20px 20px 20px;
  @media (max-width: 815px ){ 
     width: 100%;
  }
+ 
 `
 const ContentCard = styled(Card)`
  height: auto;
- margin-bottom: 100px;
+ margin-bottom: 50px;
+ margin-top: 0px;
 `
 
 const ColumnTitleStyle = styled(ColumnTitle)`
 margin-top: 0;
+`
+
+const ImageCardStyle = styled(ImageCard)`
+height: 500px;
 `
 
 export default CardsContent

@@ -3,10 +3,11 @@ require("dotenv").config({
 })
 
 module.exports = {
+  pathPrefix: `/russell`,
   siteMetadata: {
-    siteUrl: "https://delhi6.co.nz",
-    title: "Delhi 6 Paihia",
-    description: "Delhi 6 is an Indian Restaurant",
+    siteUrl: "https://greensnz.com/russell/",
+    title: "Greens Indian & Thai Restaurant Russel",
+    description: "Come to Greens with family and friends and enjoy the most traditional and authentic Thai and Indian cuisine menu served fresh and hot.",
     author: "Gurpreet Singh Dhoat"
 
   },

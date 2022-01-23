@@ -15,14 +15,14 @@ export const query = graphql`
             firstImage {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(layout: FIXED, placeholder: BLURRED, width: 500, height: 600,  transformOptions: {cropFocus: CENTER})
+                  gatsbyImageData(layout: FIXED, placeholder: BLURRED, width: 500, height: 600,  quality: 60, transformOptions: {cropFocus: CENTER})
                 }
               }
             }
             secondImage {
               localFile {
                 childImageSharp {
-                  gatsbyImageData(layout: FIXED, placeholder: BLURRED, width: 500, height: 600,  transformOptions: {cropFocus: CENTER})
+                  gatsbyImageData(layout: FIXED, placeholder: BLURRED, width: 500, height: 600,  quality: 60,  transformOptions: {cropFocus: CENTER})
                 }
               }
             }

@@ -11,6 +11,9 @@ function MobileFixedButtons(props) {
     )
 }
 const Container = styled.section`
+@media (min-width: 800px){ 
+    display: none;
+}
 position: fixed;
 bottom: 0;
 z-index: 100;

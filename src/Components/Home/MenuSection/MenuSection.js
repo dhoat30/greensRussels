@@ -22,6 +22,7 @@ const query = graphql`
                   placeholder: BLURRED
                   width: 500
                   height: 600
+                  quality: 60
                   transformOptions: {cropFocus: CENTER}
                 )
               }

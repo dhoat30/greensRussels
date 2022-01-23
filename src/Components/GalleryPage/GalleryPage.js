@@ -16,7 +16,7 @@ const query = graphql`
             node {
               localFile {
                 childImageSharp {
-                    gatsbyImageData(placeholder: BLURRED)
+                    gatsbyImageData(placeholder: BLURRED,  quality: 60)
                 }
               }
             }

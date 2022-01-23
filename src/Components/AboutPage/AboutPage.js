@@ -24,42 +24,42 @@ const query = graphql`
           thaiChefImage {
             localFile {
               childImageSharp {
-                gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
+                gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED,  quality: 60)
               }
             }
           }
           secondCardImage {
             localFile {
               childImageSharp {
-                gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
+                gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED,  quality: 60)
               }
             }
           }
           restaurantManagerImage {
             localFile {
               childImageSharp {
-                gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
+                gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED,  quality: 60)
               }
             }
           }
           mobileHeroImage {
             localFile {
               childImageSharp {
-                gatsbyImageData(placeholder: TRACED_SVG, layout: FIXED)
+                gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED,  quality: 60)
               }
             }
           }
           indianChefImage {
             localFile {
               childImageSharp {
-                gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
+                gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED,  quality: 60)
               }
             }
           }
           firstCardImage {
             localFile {
               childImageSharp {
-                gatsbyImageData(placeholder: TRACED_SVG, layout: FIXED)
+                gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED,  quality: 60)
               }
             }
           }
@@ -69,7 +69,7 @@ const query = graphql`
           node {
             localFile {
               childImageSharp {
-                gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH, height: 500)
+                gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH, height: 500,  quality: 60)
               }
             }
           }
